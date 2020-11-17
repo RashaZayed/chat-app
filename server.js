@@ -19,3 +19,8 @@ io.on("connection", (socket) => {             //event listner "connection" when 
     io.emit("message", { name, message });
   });
 });
+
+
+//io.emit emits an event to all connected clients
+// socket.broadcast.emit emits an event to all clients other than this particular one, referenced by the socket variable
+// socket.emit emits an event directly to this specific client

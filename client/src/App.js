@@ -9,22 +9,21 @@ import "./App.css";
 const socket = io.connect("http://localhost:4000");
 
 function App() {
-  const [state, setState] = useState({ message: "", name: "" });
-  const [chat, setChat] = useState([]);
+  const [state, setState] = useState({ message: "", name: "" }); //current message and name
+  const [chat, setChat] = useState([]); //array of all names and their messages
 
   useEffect(()=> {
-    socket.on('message' , (data) => {
-      console.log(data)
-      const name = data.name
-      const message = data.message
-      setChat([...chat, {name , message}] ) 
+    socket.on('message' , ({name , message}) => {
+      console.log(chat)
+      setChat([...chat, {name , message} ] ) 
     });
-    // ({name , message}) )
+    // console.log(chat)
+    
    
-  },[])
+  })
 
   const onTextChange = (e)=> {
-    setState({ ...state, [e.target.name]: e.target.value });
+    setState({ ...state, [e.target.name]: e.target.value} );
 
 
   }
