@@ -14,9 +14,9 @@ const io = socket(server, {
   },
 });
 
-io.on("connection", (socket) => {             //event listner "connection" when that happens do this function to this exact socket(socket)
-  socket.on("message", ({ name, message }) => {
-    io.emit("message", { name, message });
+io.on("connection", (socket) => {             //event listner "connection" when that happens => do this function to this exact socket(socket)
+  socket.on("message", ({ name, message }) => {    //this for listening for any incomin messages from the front end when gets new messages
+    io.emit("message", { name, message });              //send it to all other clients that on port 3000
   });
 });
 
